@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+<html lang="sl">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-127TXDRQB9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-127TXDRQB9');
+  </script>
+
+  <link rel="icon" href="%sveltekit.assets%/favicon.png"/>
+
+  <title>PRK Ljubljana</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta
+    content="Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo naši trenerji. Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)"
+    name="description">
+  <meta
+    content="Ljubljana, programerski, programer, programiranje, klub, programerski klub, programerske skupine, tecaji programiranja, treningi programiranja."
+    name="keywords">
+  <meta content="Uroš Jarc" name="author">
+
+  %sveltekit.head%
+
+</head>
+
+<body data-sveltekit-preload-data="hover">
+<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>
