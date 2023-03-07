@@ -8,6 +8,7 @@
     <a href="/tecaji">Tecaji</a>
     <a href="/trgovina">Trgovina</a>
     <a href="/narocnine">Narocnine</a>
+    <a href="/kontakt">Kontakt</a>
     <slot/>
   </main>
 </div>
