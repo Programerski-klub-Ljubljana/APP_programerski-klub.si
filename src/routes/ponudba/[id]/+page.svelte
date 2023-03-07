@@ -13,10 +13,10 @@ import {page} from "$app/stores";
   {#each produkti as p}
     <div>
       <ul>
-        <li>Status: {p.status}</li>
-        <li>Ime: {p.ime}</li>
-        <li>Enota: {p.enota}</li>
-        <li>Cena: {p.cena}</li>
+        <a href="/produkt/{p._id}">Poglej</a>
+        {#each Object.entries(p) as [key, value]}
+          <li>{key}: {value}</li>
+        {/each}
       </ul>
     </div>
   {/each}

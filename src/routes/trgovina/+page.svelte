@@ -1,19 +1,19 @@
 <script>
   import { onMount } from 'svelte'
-  let ponudbe = []
+  let ponudba = []
   onMount(async () => {
-    ponudbe = await fetch('http://localhost:8000/ponudbe').then(x => x.json())
-    console.log(ponudbe)
+    ponudba = await fetch('http://localhost:8000/ponudbe?tip=PRODUKT').then(x => x.json())
+    console.log(ponudba)
   })
 </script>
 
 <div>
-  {#each ponudbe as p}
+  {#each ponudba as p}
       <ul>
-        <a href="/trgovina/{p._id}">Poglej</a>
-        <li>Tip: {p.tip}</li>
-        <li>Ime: {p.ime}</li>
-        <li>Opis: {p.opis}</li>
+        <a href="/ponudba/{p._id}">Poglej</a>
+        {#each Object.entries(p) as [key, value]}
+          <li>{key}: {value}</li>
+        {/each}
       </ul>
   {/each}
 </div>
