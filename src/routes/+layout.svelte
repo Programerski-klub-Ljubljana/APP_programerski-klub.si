@@ -1,11 +1,13 @@
 <script>
-    export const prerender = true
 </script>
 
 <div class="app">
-    <main>
-        <slot/>
-    </main>
+  <main>
+    <a href="/">Domov</a>
+    <a href="/admin">Admin</a>
+    <a href="/trgovina">Trgovina</a>
+    <slot/>
+  </main>
 </div>
 
 <style></style>
