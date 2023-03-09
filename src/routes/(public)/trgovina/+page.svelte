@@ -8,6 +8,7 @@
 </script>
 
 <div>
+  <h1>Trgovina</h1>
   {#each ponudba as p}
       <ul>
         <a href="/ponudba/{p._id}">Poglej</a>

@@ -14,8 +14,12 @@
       username: req.username,
       password: req.password,
     }
-    let res = await axios.post('http://localhost:8000/auth/login', body).catch(err => err.response);
+    axios.post('http://localhost:8000/auth/login', body).then(async res => {
       response = await res.data
+      window.localStorage.setItem("token", response.token)
+    }).catch(err => {
+      response = err.response.data
+    });
   }
 </script>
 

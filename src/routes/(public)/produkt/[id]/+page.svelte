@@ -10,7 +10,7 @@
 </script>
 
 <div>
-  <h1>Produkti</h1>
+  <h1>Produkt</h1>
   <div>
     <ul>
       {#each Object.entries(produkt) as [key, value]}

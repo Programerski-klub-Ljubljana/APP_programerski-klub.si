@@ -1,11 +1,11 @@
 <script>
   import { onMount } from 'svelte'
+  import {page} from "$app/stores";
   let produkti = []
   onMount(async () => {
     produkti = await fetch(`http://localhost:8000/ponudbe/${$page.params.id}/produkti`).then(x => x.json())
     console.log(produkti);
   })
-import {page} from "$app/stores";
 </script>
 
 <div>
