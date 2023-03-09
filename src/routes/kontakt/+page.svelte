@@ -19,7 +19,7 @@
         {data: req.email, tip: "EMAIL"}
       ]
     }
-    let res = await axios.post('http://localhost:8000/obrazec/kontakt', body)
+    let res = await axios.post('http://localhost:8000/obrazec/kontakt', body).catch(err => err.response);
     response = await res.data
   }
 </script>
