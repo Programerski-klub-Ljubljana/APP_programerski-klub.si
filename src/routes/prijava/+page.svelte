@@ -1,7 +1,7 @@
 <script lang="ts">
-  import {token} from "../../../stores/tokenStore";
-  import {api} from "../../../stores/apiStore";
-  import {formData} from "../../../utils";
+  import {token} from "../../stores/tokenStore";
+  import {api} from "../../stores/apiStore";
+  import {formData} from "../../utils";
 
   let response: Object = {}
 

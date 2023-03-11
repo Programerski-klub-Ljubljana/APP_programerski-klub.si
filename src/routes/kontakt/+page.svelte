@@ -1,7 +1,7 @@
 <script lang="ts">
 
-  import {api} from "../../../stores/apiStore";
-  import {formData} from "../../../utils";
+  import {api} from "../../stores/apiStore";
+  import {formData} from "../../utils";
 
   let response: Object = {}
 
