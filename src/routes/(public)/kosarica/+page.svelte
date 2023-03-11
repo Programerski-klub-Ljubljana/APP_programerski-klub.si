@@ -1,19 +1,25 @@
-<script>
-  import { onMount } from 'svelte'
+<script lang="ts">
+  import {kosarica} from "../../../stores/kosaricaStore";
+  import {onMount} from "svelte";
+
   let ponudba = []
-  onMount(async () => {
-    ponudba = await fetch('http://localhost:8000/ponudbe?tip=PRODUKT').then(x => x.json())
-    console.log(ponudba)
-  })
+
+  onMount(() => ponudba = kosarica.vsebina())
+
+  function odstrani(id) {
+    kosarica.odstrani(id)
+    ponudba = kosarica.vsebina()
+  }
 </script>
 
 <div>
+  <br><br>
   {#each ponudba as p}
-      <ul>
-        <a href="/ponudba/{p._id}">Poglej</a>
-        {#each Object.entries(p) as [key, value]}
-          <li>{key}: {value}</li>
-        {/each}
-      </ul>
+    <button on:click={() => odstrani(p.produkt_id)}>Odstrani</button>
+    <ul>
+      {#each Object.entries(p) as [key, value]}
+        <li>{key}: {value}</li>
+      {/each}
+    </ul>
   {/each}
 </div>

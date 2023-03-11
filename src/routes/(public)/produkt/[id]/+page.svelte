@@ -1,17 +1,20 @@
 <script>
   import {onMount} from 'svelte'
   import {page} from "$app/stores";
-  import * as kosaricaStore from "../../../../stores/kosaricaStore.ts";
-
-  onMount(async () => {
-    produkt = await fetch(`http://localhost:8000/produkti/${$page.params.id}`).then(x => x.json())
-    console.log(produkt);
-  })
+  import {api} from "../../../../stores/apiStore";
+  import {kosarica} from "../../../../stores/kosaricaStore";
 
   let produkt = {}
   let kolicina = 1
 
-  let kupi = () => kosaricaStore.kupi({produkt_id: produkt._id, kolicina: kolicina})
+  onMount(async () => api.produkt($page.params.id).then(data => {
+    produkt = data
+  }).catch(data => {
+    console.error(data)
+  }))
+
+
+  let kupi = () => kosarica.kupi({produkt_id: produkt._id, kolicina: kolicina})
 
 </script>
 

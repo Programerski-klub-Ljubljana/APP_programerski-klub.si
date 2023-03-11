@@ -1,26 +1,22 @@
-<script>
+<script lang="ts">
+  import {token} from "../../../stores/tokenStore";
+  import {api} from "../../../stores/apiStore";
+  import {formData} from "../../../utils";
 
-  import axios from "axios";
-  import {tokenStore} from "../../../stores/tokenStore.ts";
-
-  let response = {}
+  let response: Object = {}
 
   async function poslji(e) {
-    let formData = new FormData(e.target)
-    let req = {}
-    for (let [key, value] of formData) {
-      req[key] = value
-    }
-    let body = {
-      username: req.username,
-      password: req.password,
-    }
-    axios.post('http://localhost:8000/auth/login', body).then(async res => {
-      response = await res.data
-      tokenStore.set(response.token)
-    }).catch(err => {
-      response = err.response.data
-    });
+    const form = formData(e)
+    console.log(form)
+    api.obrazec.prijava({
+      username: form.username,
+      password: form.password,
+    }).then(data => {
+      response = data
+      token.set(data.token)
+    }).catch(data => {
+      response = data
+    })
   }
 </script>
 

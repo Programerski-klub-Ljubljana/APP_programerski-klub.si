@@ -1,11 +1,11 @@
 <script>
   import {onMount} from 'svelte'
   import {page} from "$app/stores";
-  import {api} from "../../../../stores/apiStore.ts";
+  import {api} from "../../../../stores/apiStore";
 
   let produkti = []
 
-  onMount(async () => api.produkti($page.params.id)
+  onMount(() => api.ponudba($page.params.id)
     .then(data => {
       produkti = data
     }).catch(data => {

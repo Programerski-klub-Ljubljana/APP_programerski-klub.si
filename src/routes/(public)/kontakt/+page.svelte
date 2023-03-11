@@ -1,26 +1,25 @@
-<script>
+<script lang="ts">
 
-  import axios from "axios";
+  import {api} from "../../../stores/apiStore";
+  import {formData} from "../../../utils";
 
-  let response = {}
+  let response: Object = {}
 
-  async function poslji(e) {
-    let formData = new FormData(e.target)
-    let req = {}
-    for (let [key, value] of formData) {
-      req[key] = value
-    }
-    let body = {
-      ime: req.ime,
-      priimek: req.priimek,
-      vsebina: req.vsebina,
+  async function poslji(e: SubmitEvent) {
+    const form = formData(e)
+    api.obrazec.kontakt({
+      ime: form.ime,
+      priimek: form.priimek,
+      vsebina: form.vsebina,
       kontakti: [
-        {data: req.telefon, tip: "TELEFON"},
-        {data: req.email, tip: "EMAIL"}
+        {data: form.telefon, tip: "TELEFON"},
+        {data: form.email, tip: "EMAIL"}
       ]
-    }
-    let res = await axios.post('http://localhost:8000/obrazec/kontakt', body).catch(err => err.response);
-    response = await res.data
+    }).then(data => {
+      response = data
+    }).catch(data => {
+      response = data
+    })
   }
 </script>
 
