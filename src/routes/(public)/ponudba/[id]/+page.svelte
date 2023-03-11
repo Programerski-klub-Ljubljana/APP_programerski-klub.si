@@ -1,11 +1,16 @@
 <script>
-  import { onMount } from 'svelte'
+  import {onMount} from 'svelte'
   import {page} from "$app/stores";
+  import {api} from "../../../../stores/apiStore.ts";
+
   let produkti = []
-  onMount(async () => {
-    produkti = await fetch(`http://localhost:8000/ponudbe/${$page.params.id}/produkti`).then(x => x.json())
-    console.log(produkti);
-  })
+
+  onMount(async () => api.produkti($page.params.id)
+    .then(data => {
+      produkti = data
+    }).catch(data => {
+      console.log(data)
+    }))
 </script>
 
 <div>

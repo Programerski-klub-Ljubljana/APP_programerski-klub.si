@@ -1,6 +1,7 @@
 <script>
 
   import axios from "axios";
+  import {tokenStore} from "../../../stores/tokenStore.ts";
 
   let response = {}
 
@@ -16,7 +17,7 @@
     }
     axios.post('http://localhost:8000/auth/login', body).then(async res => {
       response = await res.data
-      window.localStorage.setItem("token", response.token)
+      tokenStore.set(response.token)
     }).catch(err => {
       response = err.response.data
     });

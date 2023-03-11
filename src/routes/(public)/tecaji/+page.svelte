@@ -1,10 +1,12 @@
 <script>
   import { onMount } from 'svelte'
+  import {api} from "../../../stores/apiStore.ts";
   let ponudba = []
-  onMount(async () => {
-    ponudba = await fetch('http://localhost:8000/ponudbe?tip=TECAJ').then(x => x.json())
-    console.log(ponudba)
-  })
+  onMount(async () => api.tecaji().then(data => {
+    ponudba = data
+  }).catch(data => {
+    console.log(data)
+  }))
 </script>
 
 <div>

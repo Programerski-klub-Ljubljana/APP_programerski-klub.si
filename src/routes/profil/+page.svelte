@@ -3,14 +3,16 @@
   import axios from "axios";
   import {onMount} from "svelte";
   import {goto} from "$app/navigation";
+  import {tokenStore} from "../../stores/tokenStore.ts";
+  import {get} from "svelte/store";
+  import {kosaricaStore} from "../../stores/kosaricaStore.ts";
 
   let response = {}
 
   onMount(async () => {
-    console.log(`Bearer ${window.localStorage.getItem("token")}`)
     axios.get('http://localhost:8000/auth/whois', {
       headers: {
-        "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+        "Authorization": `Bearer ${get(tokenStore)}`
       }
     }).then(async res => {
       response = await res.data
@@ -26,8 +28,11 @@
 
 <div>
   <h1>Profil</h1>
+  <p>{$tokenStore}</p>
   <br><br>
   <textarea cols=64 rows="23">{JSON.stringify(response, null, 4)}</textarea>
+  <h1>Kosarica</h1>
+  <textarea cols="64 rows=23">{JSON.stringify(get(kosaricaStore))}</textarea>
 </div>
 
 <style></style>
