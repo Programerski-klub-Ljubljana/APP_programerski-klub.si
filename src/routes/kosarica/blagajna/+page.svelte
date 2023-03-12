@@ -1,23 +1,21 @@
 <script lang="ts">
-  import {kosarica} from "../../stores/kosaricaStore.ts";
   import {onMount} from "svelte";
+  import {kosarica} from "../../../stores/kosaricaStore";
 
   let ponudba = []
 
   onMount(() => ponudba = kosarica.vsebina())
 
-  function odstrani(id) {
-    kosarica.odstrani(id)
-    ponudba = kosarica.vsebina()
+  function oddaj_narocilo() {
+    console.log("oddaj narocilo")
   }
 </script>
 
 <div>
   <br><br>
-  <a href="/kosarica/blagajna">Na blagajno</a>
+  <button on:click={oddaj_narocilo}>Oddaj narocilo</button>
   <br><br>
   {#each ponudba as p}
-    <button on:click={() => odstrani(p.produkt_id)}>Odstrani</button>
     <ul>
       {#each Object.entries(p) as [key, value]}
         <li>{key}: {value}</li>
