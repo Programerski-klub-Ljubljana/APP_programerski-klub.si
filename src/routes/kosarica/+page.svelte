@@ -22,6 +22,11 @@
       {#each Object.entries(p) as [key, value]}
         <li>{key}: {value}</li>
       {/each}
+      <ul>
+        {#each Object.entries(p.produkt) as [key, value]}
+          <li>{key}: {value}</li>
+        {/each}
+      </ul>
     </ul>
   {/each}
 </div>

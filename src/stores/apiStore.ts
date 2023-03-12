@@ -11,7 +11,7 @@ export function GET(url: string) {
         'Authorization': `Bearer ${token.get()}`
       }
     }).then(async res => {
-      if(!res.ok) reject()
+      if (!res.ok) reject()
       res.json()
         .then(data => resolve(data))
         .catch(err => reject())
@@ -20,7 +20,7 @@ export function GET(url: string) {
 }
 
 export function POST(url: string, body: object) {
-  return () => new Promise(async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     fetch(`${DOMAIN}/${url}`, {
       method: "POST",
       headers: {
@@ -30,7 +30,7 @@ export function POST(url: string, body: object) {
       },
       body: JSON.stringify(body)
     }).then(async res => {
-      if(!res.ok) reject()
+      if (!res.ok) reject()
       res.json()
         .then(data => resolve(data))
         .catch(err => reject())
@@ -46,8 +46,9 @@ export const api = {
   produkt: (id: string) => GET(`produkti/${id}`)(),
 
   obrazec: {
-    kontakt: (body: object) => POST("obrazec/kontakt", body)(),
-    prijava: (body: object) => POST("auth/prijava", body)()
+    kontakt: (body: object) => POST("obrazec/kontakt", body),
+    prijava: (body: object) => POST("auth/prijava", body),
+    narocilo: (body: object) => POST("narocila", body)
   },
 
   profil: {

@@ -4,19 +4,20 @@ import {get} from "svelte/store";
 export const kosarica = {
   store: persisted('kosaricaStore', []),
   vsebina: () => get(kosarica.store),
-  kupi: (ele: Object) => {
+  dodaj: (ele: Object) => {
     kosarica.store.update(data => {
       for (const ke of data) {
-        if (ke.produkt_id === ele.produkt_id) {
+        if (ke.produkt._id === ele.produkt._id) {
           ke.kolicina += ele.kolicina
           return data
         }
       }
-      data.push({kolicina: ele.kolicina, produkt_id: ele.produkt_id})
+      data.push(ele)
       return data
     })
   },
   odstrani: (produkt_id: Object) => {
-    kosarica.store.update(data => data.filter(ele => produkt_id != ele.produkt_id))
+    // @ts-ignore
+    kosarica.store.update(data => data.filter(ele => produkt_id != ele.produkt.id))
   }
 }

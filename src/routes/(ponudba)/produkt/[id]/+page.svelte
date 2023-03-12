@@ -14,14 +14,17 @@
   }))
 
 
-  let kupi = () => kosarica.kupi({produkt_id: produkt._id, kolicina: kolicina})
+  let v_kosarico = () => kosarica.dodaj({
+    produkt: produkt,
+    kolicina: kolicina
+  })
 
 </script>
 
 <div>
   <h1>Produkt</h1>
   <input type="number" bind:value={kolicina}>
-  <button on:click={kupi}>Buy</button>
+  <button on:click={v_kosarico}>V kosarico</button>
   <div>
     <ul>
       {#each Object.entries(produkt) as [key, value]}
