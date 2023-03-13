@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {kosarica} from "../../stores/kosaricaStore.ts";
+  import {kosarica} from "../../../stores/kosaricaStore.ts";
   import {onMount} from "svelte";
 
   let ponudba = []

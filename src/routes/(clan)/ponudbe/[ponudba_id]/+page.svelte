@@ -1,11 +1,11 @@
 <script>
   import {onMount} from 'svelte'
   import {page} from "$app/stores";
-  import {api} from "../../../../stores/apiStore";
+  import {api} from "../../../../stores/apiStore.ts";
 
   let produkti = []
 
-  onMount(() => api.ponudba($page.params.id)
+  onMount(() => api.ponudba($page.params.ponudba_id)
     .then(data => {
       produkti = data
     }).catch(data => {
@@ -18,7 +18,7 @@
   {#each produkti as p}
     <div>
       <ul>
-        <a href="/produkt/{p._id}">Poglej</a>
+        <a href="/ponudbe/{$page.params.ponudba_id}/{p._id}">Poglej</a>
         {#each Object.entries(p) as [key, value]}
           <li>{key}: {value}</li>
         {/each}

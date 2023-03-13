@@ -1,13 +1,13 @@
 <script>
   import {onMount} from 'svelte'
   import {page} from "$app/stores";
-  import {api} from "../../../../stores/apiStore";
-  import {kosarica} from "../../../../stores/kosaricaStore";
+  import {api} from "../../../../../stores/apiStore.ts";
+  import {kosarica} from "../../../../../stores/kosaricaStore.ts";
 
   let produkt = {}
   let kolicina = 1
 
-  onMount(async () => api.produkt($page.params.id).then(data => {
+  onMount(async () => api.produkt($page.params.produkt_id).then(data => {
     produkt = data
   }).catch(data => {
     console.error(data)

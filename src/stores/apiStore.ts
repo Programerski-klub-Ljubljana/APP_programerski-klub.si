@@ -39,10 +39,8 @@ export function POST(url: string, body: object) {
 }
 
 export const api = {
-  narocnine: GET("ponudbe?tip=NAROCNINA"),
-  tecaji: GET("ponudbe?tip=TECAJ"),
-  trgovina: GET("ponudbe?tip=PRODUKT"),
-  ponudba: (id: string) => GET(`ponudbe/${id}/produkti`)(),
+  ponudbe: GET(`ponudbe`),
+  ponudba: (id: string) => GET(`ponudbe/${id}`)(),
   produkt: (id: string) => GET(`produkti/${id}`)(),
 
   obrazec: {

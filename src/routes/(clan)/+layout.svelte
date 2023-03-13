@@ -17,16 +17,14 @@
 </script>
 
 <div>
+  <br>
+  <br>
+  <textarea cols=64 rows="5">{JSON.stringify(response, null, 4)}</textarea>
   <br><br>
-  <a href="/profil/narocnine">Narocnine</a>
-  <a href="/profil/narocila">Narocila</a>
-
-
-  <div>
-    <h1>Profil</h1>
-    <textarea cols=64 rows="5">{JSON.stringify(response, null, 4)}</textarea>
-  </div>
-
+  <a href="/narocnine">Narocnine</a>
+  <a href="/narocila">Narocila</a>
+  <a href="/kosarica">Kosarica</a>
+  <a href="/ponudbe">Ponudbe</a>
   <slot/>
 </div>
 

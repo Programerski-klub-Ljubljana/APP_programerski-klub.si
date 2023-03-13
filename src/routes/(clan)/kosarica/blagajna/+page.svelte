@@ -1,8 +1,8 @@
 <script lang="ts">
   import {onMount} from "svelte";
-  import {kosarica} from "../../../stores/kosaricaStore";
-  import {api} from "../../../stores/apiStore";
-  import {dateISO, formData} from "../../../utils";
+  import {kosarica} from "../../../../stores/kosaricaStore";
+  import {api} from "../../../../stores/apiStore";
+  import {dateISO, formData} from "../../../../utils";
 
   let izbire = []
   let response: Object = {}
